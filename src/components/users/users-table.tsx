@@ -97,7 +97,7 @@ export function UsersTable({ users, onEdit, onDelete, isLoadingDeleteForId, curr
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                       <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                      <AlertDialogAction onClick={async () => user.id && await onDelete(user.id)}>
+                      <AlertDialogAction onClick={async () => user.id && (await onDelete(user.id))}>
                         Excluir Permanentemente
                       </AlertDialogAction>
                     </AlertDialogFooter>

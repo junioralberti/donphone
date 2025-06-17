@@ -51,7 +51,10 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     <SidebarProvider defaultOpen>
       <Sidebar className="bg-sidebar-background text-sidebar-foreground border-r border-sidebar-border">
         <SidebarHeader className="p-4 border-b border-sidebar-border">
-          <Link href="/dashboard" className="flex items-center gap-2 text-xl font-semibold text-sidebar-foreground">
+          <Link
+            href="/dashboard"
+            className="flex items-center gap-2 text-xl font-semibold text-sidebar-foreground"
+            legacyBehavior>
             <span className="font-headline">DonPhone</span>
           </Link>
         </SidebarHeader>
@@ -65,7 +68,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                   tooltip={{ children: item.title, className: "text-xs" }}
                   className="data-[active=true]:text-sidebar-primary data-[active=true]:bg-sidebar-accent hover:text-sidebar-primary hover:bg-sidebar-accent"
                 >
-                  <Link href={item.href}>
+                  <Link href={item.href} legacyBehavior>
                     <item.icon />
                     <span>{item.title}</span>
                   </Link>
@@ -84,7 +87,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                   tooltip={{ children: item.title, className: "text-xs" }}
                   className="data-[active=true]:text-sidebar-primary data-[active=true]:bg-sidebar-accent hover:text-sidebar-primary hover:bg-sidebar-accent"
                 >
-                  <Link href={item.href}>
+                  <Link href={item.href} legacyBehavior>
                     <item.icon />
                     <span>{item.title}</span>
                   </Link>
@@ -136,14 +139,12 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           {children}
         </main>
       </SidebarInset>
-      
       <Dialog open={isCalculatorOpen} onOpenChange={setIsCalculatorOpen}>
         <DialogContent className="p-0 max-w-xs border-none bg-transparent shadow-none">
           {/* DialogHeader and DialogTitle are removed to make it more like a floating widget */}
           <CalculatorComponent />
         </DialogContent>
       </Dialog>
-
       <Dialog open={isSupportDialogOpen} onOpenChange={setIsSupportDialogOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
@@ -184,7 +185,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-
     </SidebarProvider>
   );
 }

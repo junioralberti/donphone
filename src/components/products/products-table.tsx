@@ -105,7 +105,7 @@ export function ProductsTable({ products, onEdit, onDelete, isLoadingDeleteForId
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                       <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                      <AlertDialogAction onClick={async () => product.id && await onDelete(product.id)}>
+                      <AlertDialogAction onClick={async () => product.id && (await onDelete(product.id))}>
                         Excluir Permanentemente
                       </AlertDialogAction>
                     </AlertDialogFooter>

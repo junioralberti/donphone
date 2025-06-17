@@ -86,7 +86,7 @@ export function ProvidersTable({ providers, onEdit, onDelete, isLoadingDeleteFor
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                       <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                      <AlertDialogAction onClick={async () => provider.id && await onDelete(provider.id)}>
+                      <AlertDialogAction onClick={async () => provider.id && (await onDelete(provider.id))}>
                         Excluir Permanentemente
                       </AlertDialogAction>
                     </AlertDialogFooter>

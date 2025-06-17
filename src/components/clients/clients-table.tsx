@@ -85,7 +85,7 @@ export function ClientsTable({ clients, onEdit, onDelete, isLoadingDeleteForId }
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                       <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                      <AlertDialogAction onClick={async () => client.id && await onDelete(client.id)}>
+                      <AlertDialogAction onClick={async () => client.id && (await onDelete(client.id))}>
                         Excluir Permanentemente
                       </AlertDialogAction>
                     </AlertDialogFooter>

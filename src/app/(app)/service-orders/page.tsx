@@ -1071,7 +1071,7 @@ export default function ServiceOrdersPage() {
                             </AlertDialogHeader>
                             <AlertDialogFooter>
                               <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                              <AlertDialogAction onClick={async () => os.id && await handleDeleteServiceOrder(os.id)}>
+                              <AlertDialogAction onClick={async () => os.id && (await handleDeleteServiceOrder(os.id))}>
                                 Excluir Permanentemente
                               </AlertDialogAction>
                             </AlertDialogFooter>

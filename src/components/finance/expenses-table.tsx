@@ -129,7 +129,7 @@ export function ExpensesTable({
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                       <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                      <AlertDialogAction onClick={async () => expense.id && await onDelete(expense.id)}>
+                      <AlertDialogAction onClick={async () => expense.id && (await onDelete(expense.id))}>
                         Excluir Permanentemente
                       </AlertDialogAction>
                     </AlertDialogFooter>
