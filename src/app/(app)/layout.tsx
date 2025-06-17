@@ -1,10 +1,9 @@
-
 "use client";
 
 import type React from 'react';
 import { useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import Link from 'next/link';
+import Link from 'next/link'; // Importante manter o Link
 import { useAuth } from '@/context/auth-context';
 import { navItems, type NavItem } from '@/config/nav';
 import {
@@ -36,9 +35,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   const [isSupportDialogOpen, setIsSupportDialogOpen] = useState(false);
 
   if (!isAuthenticated) {
-    return null; 
+    return null;
   }
-  
+
   const getInitials = (name: string = "Usuário") => {
     return name.split(' ').map(n => n[0]).join('').toUpperCase();
   }
@@ -51,10 +50,10 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     <SidebarProvider defaultOpen>
       <Sidebar className="bg-sidebar-background text-sidebar-foreground border-r border-sidebar-border">
         <SidebarHeader className="p-4 border-b border-sidebar-border">
+          {/* ALTERAÇÃO 1: Removido legacyBehavior da linha 54. Não precisa de <a>, pois tem apenas um span. */}
           <Link
             href="/dashboard"
-            className="flex items-center gap-2 text-xl font-semibold text-sidebar-foreground"
-            legacyBehavior>
+            className="flex items-center gap-2 text-xl font-semibold text-sidebar-foreground">
             <span className="font-headline">DonPhone</span>
           </Link>
         </SidebarHeader>
@@ -68,9 +67,12 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                   tooltip={{ children: item.title, className: "text-xs" }}
                   className="data-[active=true]:text-sidebar-primary data-[active=true]:bg-sidebar-accent hover:text-sidebar-primary hover:bg-sidebar-accent"
                 >
-                  <Link href={item.href} legacyBehavior>
-                    <item.icon />
-                    <span>{item.title}</span>
+                  {/* ALTERAÇÃO 2: Removido legacyBehavior e ENVOLVIDO icon e span em um <div> único para o Link. */}
+                  <Link href={item.href}>
+                    <div> {/* <--- NOVO ENVOLTÓRIO */}
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </div>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -78,7 +80,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           </SidebarMenu>
         </SidebarContent>
         <SidebarFooter className="p-2 border-t border-sidebar-border">
-           <SidebarMenu>
+            <SidebarMenu>
             {bottomNavItems.map((item) => (
               <SidebarMenuItem key={item.href}>
                 <SidebarMenuButton
@@ -87,9 +89,12 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                   tooltip={{ children: item.title, className: "text-xs" }}
                   className="data-[active=true]:text-sidebar-primary data-[active=true]:bg-sidebar-accent hover:text-sidebar-primary hover:bg-sidebar-accent"
                 >
-                  <Link href={item.href} legacyBehavior>
-                    <item.icon />
-                    <span>{item.title}</span>
+                  {/* ALTERAÇÃO 3: Removido legacyBehavior e ENVOLVIDO icon e span em um <div> único para o Link. */}
+                  <Link href={item.href}>
+                    <div> {/* <--- NOVO ENVOLTÓRIO */}
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </div>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
