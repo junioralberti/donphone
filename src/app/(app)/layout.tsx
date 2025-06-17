@@ -1,9 +1,10 @@
+// src/app/(app)/layout.tsx
 "use client";
 
 import type React from 'react';
 import { useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import Link from 'next/link'; // Importante manter o Link
+import Link from 'next/link';
 import { useAuth } from '@/context/auth-context';
 import { navItems, type NavItem } from '@/config/nav';
 import {
@@ -50,7 +51,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     <SidebarProvider defaultOpen>
       <Sidebar className="bg-sidebar-background text-sidebar-foreground border-r border-sidebar-border">
         <SidebarHeader className="p-4 border-b border-sidebar-border">
-          {/* ALTERAÇÃO 1: Removido legacyBehavior da linha 54. Não precisa de <a>, pois tem apenas um span. */}
           <Link
             href="/dashboard"
             className="flex items-center gap-2 text-xl font-semibold text-sidebar-foreground">
@@ -67,9 +67,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                   tooltip={{ children: item.title, className: "text-xs" }}
                   className="data-[active=true]:text-sidebar-primary data-[active=true]:bg-sidebar-accent hover:text-sidebar-primary hover:bg-sidebar-accent"
                 >
-                  {/* ALTERAÇÃO 2: Removido legacyBehavior e ENVOLVIDO icon e span em um <div> único para o Link. */}
+                  {/* ALTERAÇÃO AQUI: Adicionado className="flex items-center gap-2" ao div */}
                   <Link href={item.href}>
-                    <div> {/* <--- NOVO ENVOLTÓRIO */}
+                    <div className="flex items-center gap-2"> {/* <-- NOVO */}
                       <item.icon />
                       <span>{item.title}</span>
                     </div>
@@ -89,9 +89,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                   tooltip={{ children: item.title, className: "text-xs" }}
                   className="data-[active=true]:text-sidebar-primary data-[active=true]:bg-sidebar-accent hover:text-sidebar-primary hover:bg-sidebar-accent"
                 >
-                  {/* ALTERAÇÃO 3: Removido legacyBehavior e ENVOLVIDO icon e span em um <div> único para o Link. */}
+                  {/* ALTERAÇÃO AQUI: Adicionado className="flex items-center gap-2" ao div */}
                   <Link href={item.href}>
-                    <div> {/* <--- NOVO ENVOLTÓRIO */}
+                    <div className="flex items-center gap-2"> {/* <-- NOVO */}
                       <item.icon />
                       <span>{item.title}</span>
                     </div>
